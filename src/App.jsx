@@ -7,6 +7,7 @@ import SelectHotel from "./pages/booking/SelectHotel";
 import CreateBooking from "./pages/booking/CreateBooking";
 import EditBooking from "./pages/booking/EditBooking";
 import ConfirmDelete from "./pages/booking/ConfirmDelete";
+import WeeklyView from "./pages/WeeklyView";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
            <Route path="/bookings/new/:hotelId" element={<CreateBooking />} />
            <Route path="/bookings/edit/:bookingId" element={<EditBooking />} />
            <Route path="/bookings/delete/:bookingId" element={<ConfirmDelete />} />
+           <Route path="/weekly-view" element={<WeeklyView />} />
       </Routes>
     </Router>
   );

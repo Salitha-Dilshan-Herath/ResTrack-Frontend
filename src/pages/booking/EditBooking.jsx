@@ -15,7 +15,6 @@ export default function EditBooking() {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
   const [roomId, setRoomId] = useState("");
-  const [hotelId, setHotelId] = useState(null);
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -26,7 +25,6 @@ export default function EditBooking() {
         setCheckIn(new Date(booking.checkInDate));
         setCheckOut(new Date(booking.checkOutDate));
         setRoomId(booking.roomId);
-        setHotelId(booking.hotelId);
 
         const roomList = await RoomService.getRoomsByHotelId(booking.hotelId);
         setRooms(roomList);
@@ -91,7 +89,7 @@ export default function EditBooking() {
               <option value="">Select Room</option>
               {rooms.map((room) => (
                 <option key={room.id} value={room.id}>
-                  {room.name || `Room ${room.id}`}
+                  {room.name || `${room.roomType}`}
                 </option>
               ))}
             </select>

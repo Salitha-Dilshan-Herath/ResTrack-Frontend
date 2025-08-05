@@ -39,3 +39,25 @@ export async function apiRequest(endpoint, method = "GET", data = null) {
     throw err;
   }
 }
+
+
+export async function apiRequestRaw(endpoint, method = "GET", data = null, responseType = "json") {
+  const config = {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+    }
+  };
+
+  if (data) config.body = JSON.stringify(data);
+
+  const response = await fetch(`${BASE_URL}${endpoint}`, config);
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(error);
+  }
+
+  return responseType === "text" ? response.text() : response.json();
+}
