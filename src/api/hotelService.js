@@ -2,16 +2,9 @@
 import { apiRequest } from "./api";
 
 export const HotelService = {
-  async getAllHotels() {
-    return apiRequest("/Hotel", "GET");
-  },
-
-   async getHotelById(hotelId) {
-    return apiRequest(`/Hotel/${hotelId}`, "GET");
-  },
-  
-  // Example: addHotel, updateHotel, deleteHotel, etc.
-  // async addHotel(data) {
-  //   return apiRequest("/Hotel", "POST", data);
-  // }
+  getAll: () => apiRequest("/hotel"),
+  getById: (id) => apiRequest(`/hotel/${id}`),
+  create: (data) => apiRequest("/hotel", "POST", data),
+  update: (id, data) => apiRequest(`/hotel/${id}`, "PUT", data),
+  delete: (id) => apiRequest(`/hotel/${id}`, "DELETE")
 };

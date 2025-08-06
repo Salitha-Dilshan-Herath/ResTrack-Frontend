@@ -11,6 +11,13 @@ import WeeklyView from "./pages/WeeklyView";
 import SpecialRequests from "./pages/specialRequest/SpecialRequests";
 import CreateSpecialRequest from "./pages/specialRequest/CreateSpecialRequest";
 import SpecialConfirmDelete from "./pages/specialRequest/ConfirmDelete";
+import HotelList from "./pages/hotel/HotelList";
+import HotelForm from "./pages/hotel/HotelForm";
+import HotelDelete from "./pages/hotel/HotelDelete";
+import RoomList from "./pages/room/RoomList";
+import RoomForm from "./pages/room/RoomForm";
+import RoomDelete from "./pages/room/RoomDelete";
+
 function App() {
   return (
     <Router>
@@ -29,6 +36,16 @@ function App() {
         <Route path="/special-requests/new" element={<CreateSpecialRequest />} />
         <Route path="/special-requests/edit/:id" element={<CreateSpecialRequest />} />
         <Route path="/special-requests/delete/:id" element={<SpecialConfirmDelete />} />
+
+        <Route path="/hotels" element={<HotelList />} />
+        <Route path="/hotels/new" element={<HotelForm />} />
+        <Route path="/hotels/edit/:id" element={<HotelForm />} />
+        <Route path="/hotels/delete/:id" element={<HotelDelete />} />
+
+        <Route path="/rooms" element={<RoomList />} />
+        <Route path="/rooms/new/:hotelId" element={<RoomForm />} />
+        <Route path="/rooms/edit/:id" element={<RoomForm />} />
+        <Route path="/rooms/delete/:id" element={<RoomDelete />} />
       </Routes>
     </Router>
   );

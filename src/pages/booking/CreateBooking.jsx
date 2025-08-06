@@ -27,10 +27,10 @@ export default function CreateBooking() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const hotel = await HotelService.getHotelById(hotelId);
+        const hotel = await HotelService.getById(hotelId);
         setHotelName(hotel.name);
 
-        const roomList = await RoomService.getRoomsByHotelId(hotelId);
+        const roomList = await RoomService.getByHotelId(hotelId);
         setRooms(roomList);
       } catch (err) {
         console.error("Error fetching data:", err.message);

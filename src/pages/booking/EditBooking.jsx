@@ -26,7 +26,7 @@ export default function EditBooking() {
         setCheckOut(new Date(booking.checkOutDate));
         setRoomId(booking.roomId);
 
-        const roomList = await RoomService.getRoomsByHotelId(booking.hotelId);
+        const roomList = await RoomService.getByHotelId(booking.hotelId);
         setRooms(roomList);
       } catch (err) {
         toast.error(err.message || "Failed to load booking");

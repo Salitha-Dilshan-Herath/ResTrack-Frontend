@@ -7,7 +7,7 @@ export default function SelectHotel() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    HotelService.getAllHotels()
+    HotelService.getAll()
       .then((data) => setHotels(data))
       .catch((err) => console.error("Failed to load hotels:", err.message));
   }, []);

@@ -23,7 +23,7 @@ export default function WeeklyView() {
                 const hotelMap = {};
                 await Promise.all(hotelIds.map(async id => {
                     try {
-                        const hotel = await HotelService.getHotelById(id);
+                        const hotel = await HotelService.getById(id);
                         hotelMap[id] = hotel.name;
                     } catch {
                         hotelMap[id] = `Hotel #${id}`;
@@ -33,7 +33,7 @@ export default function WeeklyView() {
                 const roomMap = {};
                 await Promise.all(hotelIds.map(async hotelId => {
                     try {
-                        const rooms = await RoomService.getRoomsByHotelId(hotelId);
+                        const rooms = await RoomService.getByHotelId(hotelId);
                         rooms.forEach(room => {
                             roomMap[room.id] = {
                                 type: room.roomType || "Unknown"

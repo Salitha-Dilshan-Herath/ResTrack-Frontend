@@ -16,14 +16,14 @@ export default function Bookings() {
         const bookingData = await BookingService.getAllBookings();
         setBookings(bookingData);
 
-        const hotelData = await HotelService.getAllHotels();
+        const hotelData = await HotelService.getAll();
         setHotels(hotelData);
 
         const uniqueHotelIds = [...new Set(bookingData.map(b => b.hotelId))];
 
         const roomResults = await Promise.all(
           uniqueHotelIds.map(async (hotelId) => {
-            const rooms = await RoomService.getRoomsByHotelId(hotelId);
+            const rooms = await RoomService.getByHotelId(hotelId);
             return { hotelId, rooms };
           })
         );
