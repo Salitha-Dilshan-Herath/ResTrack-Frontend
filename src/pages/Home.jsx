@@ -1,7 +1,25 @@
 import FeatureCard from "../components/FeatureCard";
 import StatBar from "../components/StatBar";
+import { useEffect, useState } from "react";
+import { BookingService } from "../api/bookingService";
 
 export default function Home() {
+
+  const [stats, setStats] = useState({ totalBookings: 0, activeStays: 0 });
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const data = await BookingService.getStats();
+        setStats(data);
+      } catch (err) {
+        console.error("Error loading booking stats:", err.message);
+      }
+    }
+
+    fetchStats();
+  }, []);
+
   return (
     <div>
       <div className="bg-gray-700 text-white text-center py-12">
@@ -19,7 +37,7 @@ export default function Home() {
         <FeatureCard title="Special Requests" icon="🔔" description="Manage all guest special requests and preferences efficiently." />
       </div>
 
-      <StatBar total={0} active={0} rooms={4} />
+      <StatBar total={stats.totalBookings} active={stats.activeStays} rooms={4} />
 
       <div className="text-center my-8">
         <button className="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">Create New Booking</button>

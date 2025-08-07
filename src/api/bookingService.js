@@ -11,4 +11,5 @@ export const BookingService = {
 
     deleteBooking: (id) => apiRequest(`/Booking/${id}`, "DELETE"),
 
+    getStats: () => apiRequest("/Booking/stats", "GET"),
 };
