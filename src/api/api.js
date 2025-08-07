@@ -1,5 +1,5 @@
 // src/api/api.js
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://localhost:7176/gateway";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://apigateway20250806233953-dee6geb4enh7faeg.canadacentral-01.azurewebsites.net/gateway";
 
 export async function apiRequest(endpoint, method = "GET", data = null) {
   const config = {
